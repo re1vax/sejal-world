@@ -8,28 +8,28 @@ const TimelineSection = () => {
       title: "The Day We Met",
       date: "February 14, 2023",
       description: "The universe conspired to bring us together on the most romantic day of the year.",
-      color: "text-primary"
+      color: "text-romantic-pink"
     },
     {
       icon: Star,
       title: "Our First Adventure",
       date: "April 22, 2023",
       description: "That weekend getaway where we laughed until our stomachs hurt and fell even deeper in love.",
-      color: "text-accent"
+      color: "text-romantic-gold"
     },
     {
       icon: Gift,
       title: "Moving In Together",
       date: "September 1, 2023",
       description: "Creating our little nest, building a home filled with love, laughter, and countless memories.",
-      color: "text-primary"
+      color: "text-romantic-coral"
     },
     {
       icon: Calendar,
       title: "Your Birthday",
       date: "Today",
       description: "Celebrating the most wonderful person and looking forward to all the beautiful moments ahead.",
-      color: "text-accent"
+      color: "text-romantic-pink"
     }
   ];
 
@@ -67,20 +67,20 @@ const TimelineSection = () => {
                   
                   {/* Content */}
                   <div className={`ml-20 md:ml-0 md:w-1/2 ${isEven ? 'md:pr-8' : 'md:pl-8'}`}>
-                    <Card className="bg-primary-foreground/95 backdrop-blur-sm border-primary-foreground/20 soft-shadow hover:romantic-shadow transition-all duration-300">
+                    <Card className="bg-card/95 backdrop-blur-sm border-border soft-shadow hover:romantic-shadow transition-all duration-300">
                       <CardContent className="p-6">
                         <div className="flex items-center gap-3 mb-3">
                           <Icon className={milestone.color} size={24} />
-                          <span className="text-sm font-medium text-accent">
+                          <span className="text-sm font-medium text-romantic-coral">
                             {milestone.date}
                           </span>
                         </div>
                         
-                        <h3 className="text-xl font-bold text-primary mb-3 font-script">
+                        <h3 className="text-xl font-bold text-romantic-pink mb-3 font-script">
                           {milestone.title}
                         </h3>
                         
-                        <p className="text-foreground/80 leading-relaxed">
+                        <p className="text-card-foreground/90 leading-relaxed">
                           {milestone.description}
                         </p>
                       </CardContent>
