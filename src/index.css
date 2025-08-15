@@ -8,53 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Romantic Birthday Theme */
-    --background: 350 100% 99%;
-    --foreground: 345 15% 25%;
+    /* Dark Romantic Theme */
+    --background: 0 0% 5%;
+    --foreground: 350 100% 95%;
 
-    --card: 350 50% 98%;
-    --card-foreground: 345 15% 25%;
+    --card: 0 0% 8%;
+    --card-foreground: 350 100% 90%;
 
-    --popover: 350 50% 98%;
-    --popover-foreground: 345 15% 25%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 350 100% 90%;
 
-    --primary: 348 83% 47%;
-    --primary-foreground: 350 100% 99%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 350 100% 95%;
 
-    --secondary: 350 100% 95%;
-    --secondary-foreground: 345 15% 25%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 350 100% 90%;
 
-    --muted: 350 50% 96%;
-    --muted-foreground: 345 8% 55%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 350 20% 70%;
 
-    --accent: 14 100% 85%;
-    --accent-foreground: 345 15% 25%;
+    --accent: 348 83% 65%;
+    --accent-foreground: 0 0% 5%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 350 100% 99%;
+    --destructive-foreground: 350 100% 95%;
 
-    --border: 350 30% 90%;
-    --input: 350 30% 94%;
-    --ring: 348 83% 47%;
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 348 83% 65%;
 
     --radius: 1rem;
 
-    /* Custom romantic tokens */
-    --romantic-pink: 348 83% 47%;
-    --romantic-blush: 350 100% 95%;
-    --romantic-coral: 14 100% 85%;
-    --romantic-gold: 45 100% 70%;
-    --romantic-cream: 350 100% 99%;
+    /* Custom romantic tokens for dark theme */
+    --romantic-pink: 348 83% 65%;
+    --romantic-blush: 350 50% 20%;
+    --romantic-coral: 14 100% 70%;
+    --romantic-gold: 45 100% 75%;
+    --romantic-cream: 0 0% 5%;
     
-    /* Gradients */
-    --gradient-romantic: linear-gradient(135deg, hsl(348 83% 47%), hsl(14 100% 85%));
-    --gradient-soft: linear-gradient(180deg, hsl(350 100% 99%), hsl(350 100% 95%));
-    --gradient-sunset: linear-gradient(45deg, hsl(14 100% 85%), hsl(45 100% 70%));
+    /* Dark gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(0 0% 0%), hsl(348 83% 65%));
+    --gradient-soft: linear-gradient(180deg, hsl(0 0% 5%), hsl(0 0% 8%));
+    --gradient-sunset: linear-gradient(45deg, hsl(348 83% 65%), hsl(45 100% 75%));
     
-    /* Shadows */
-    --shadow-romantic: 0 10px 30px -10px hsl(348 83% 47% / 0.3);
-    --shadow-soft: 0 4px 20px -4px hsl(348 83% 47% / 0.1);
-    --shadow-glow: 0 0 40px hsl(348 83% 47% / 0.2);
+    /* Dark shadows with romantic glow */
+    --shadow-romantic: 0 10px 30px -10px hsl(348 83% 65% / 0.4);
+    --shadow-soft: 0 4px 20px -4px hsl(348 83% 65% / 0.2);
+    --shadow-glow: 0 0 40px hsl(348 83% 65% / 0.3);
 
     --sidebar-background: 0 0% 98%;
 
