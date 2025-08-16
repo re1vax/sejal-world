@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Heart } from "lucide-react";
+import { Heart, Gamepad2 } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroBackground from "@/assets/hero-background.jpg";
 
 const HeroSection = () => {
@@ -50,18 +51,22 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               className="romantic-shadow hover:glow-shadow transition-all duration-300 text-lg px-8 py-4"
+              onClick={() => document.getElementById('memories')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Heart className="mr-2" size={20} />
               Our Memories
             </Button>
             
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all duration-300 text-lg px-8 py-4"
-            >
-              Love Letter
-            </Button>
+            <Link to="/games">
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all duration-300 text-lg px-8 py-4"
+              >
+                <Gamepad2 className="mr-2" size={20} />
+                Play Games
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

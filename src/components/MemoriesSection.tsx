@@ -25,7 +25,7 @@ const MemoriesSection = () => {
   ];
 
   return (
-    <section className="py-20 px-4 soft-gradient">
+    <section id="memories" className="py-20 px-4 soft-gradient">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="font-script text-5xl md:text-6xl text-primary mb-4">
