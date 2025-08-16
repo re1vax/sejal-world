@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark Romantic Theme */
+    /* Dark Romantic Theme with Better Contrast */
     --background: 0 0% 3%;
     --foreground: 350 50% 95%;
 
@@ -18,8 +18,8 @@ All colors MUST be HSL.
     --popover: 0 0% 6%;
     --popover-foreground: 350 50% 92%;
 
-    --primary: 0 0% 0%;
-    --primary-foreground: 350 50% 95%;
+    --primary: 348 85% 70%;
+    --primary-foreground: 0 0% 8%;
 
     --secondary: 350 20% 12%;
     --secondary-foreground: 350 50% 90%;
@@ -27,7 +27,7 @@ All colors MUST be HSL.
     --muted: 0 0% 8%;
     --muted-foreground: 350 30% 75%;
 
-    --accent: 348 85% 70%;
+    --accent: 14 85% 75%;
     --accent-foreground: 0 0% 10%;
 
     --destructive: 0 84.2% 60.2%;
@@ -67,53 +67,54 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 345 15% 8%;
-    --foreground: 350 100% 95%;
+    --background: 0 0% 3%;
+    --foreground: 350 50% 95%;
 
-    --card: 345 15% 10%;
-    --card-foreground: 350 100% 95%;
+    --card: 0 0% 6%;
+    --card-foreground: 350 50% 92%;
 
-    --popover: 345 15% 10%;
-    --popover-foreground: 350 100% 95%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 350 50% 92%;
 
-    --primary: 348 83% 60%;
-    --primary-foreground: 345 15% 8%;
+    --primary: 348 85% 70%;
+    --primary-foreground: 0 0% 8%;
 
-    --secondary: 345 15% 15%;
-    --secondary-foreground: 350 100% 95%;
+    --secondary: 350 20% 12%;
+    --secondary-foreground: 350 50% 90%;
 
-    --muted: 345 15% 15%;
-    --muted-foreground: 345 8% 65%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 350 30% 75%;
 
-    --accent: 14 100% 70%;
-    --accent-foreground: 345 15% 8%;
+    --accent: 14 85% 75%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 62.8% 50%;
-    --destructive-foreground: 350 100% 95%;
+    --destructive-foreground: 350 50% 95%;
 
-    --border: 345 15% 20%;
-    --input: 345 15% 20%;
-    --ring: 348 83% 60%;
+    --border: 350 20% 15%;
+    --input: 0 0% 10%;
+    --ring: 348 85% 70%;
     
-    /* Dark mode romantic tokens */
-    --romantic-pink: 348 83% 60%;
-    --romantic-blush: 345 15% 15%;
-    --romantic-coral: 14 100% 70%;
-    --romantic-gold: 45 100% 80%;
-    --romantic-cream: 345 15% 8%;
+    /* Dark mode romantic tokens with proper contrast */
+    --romantic-pink: 348 85% 70%;
+    --romantic-blush: 350 20% 12%;
+    --romantic-coral: 14 85% 75%;
+    --romantic-gold: 45 90% 80%;
+    --romantic-cream: 350 50% 95%;
     
-    /* Dark gradients */
-    --gradient-romantic: linear-gradient(135deg, hsl(348 83% 60%), hsl(14 100% 70%));
-    --gradient-soft: linear-gradient(180deg, hsl(345 15% 8%), hsl(345 15% 12%));
-    --gradient-sunset: linear-gradient(45deg, hsl(14 100% 70%), hsl(45 100% 80%));
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Dark gradients with better contrast */
+    --gradient-romantic: linear-gradient(135deg, hsl(0 0% 0%), hsl(348 85% 70%));
+    --gradient-soft: linear-gradient(180deg, hsl(0 0% 3%), hsl(350 20% 8%));
+    --gradient-sunset: linear-gradient(45deg, hsl(348 85% 70%), hsl(45 90% 80%));
+    
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 350 50% 90%;
+    --sidebar-primary: 348 85% 70%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 350 20% 10%;
+    --sidebar-accent-foreground: 350 50% 90%;
+    --sidebar-border: 350 20% 15%;
+    --sidebar-ring: 348 85% 70%;
   }
 }
 
