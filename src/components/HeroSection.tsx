@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Gamepad2, Sparkles } from "lucide-react";
+import { Heart, Gamepad2, Sparkles, Circle, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import heroBackground from "@/assets/hero-background.jpg";
@@ -7,12 +7,13 @@ import heroBackground from "@/assets/hero-background.jpg";
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState(
-    Array.from({ length: 25 }, (_, i) => ({
+    Array.from({ length: 50 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 20 + 10,
-      type: Math.random() > 0.5 ? 'heart' : 'sparkle',
+      size: Math.random() * 25 + 8,
+      type: ['heart', 'sparkle', 'dot', 'light', 'zap'][Math.floor(Math.random() * 5)],
+      opacity: Math.random() * 0.6 + 0.2,
     }))
   );
 
@@ -35,16 +36,17 @@ const HeroSection = () => {
     const distance = Math.sqrt(
       Math.pow(particle.x - mousePosition.x, 2) + Math.pow(particle.y - mousePosition.y, 2)
     );
-    const repelStrength = Math.max(0, (20 - distance) * 2);
+    const repelStrength = Math.max(0, (25 - distance) * 1.5);
     const angle = Math.atan2(particle.y - mousePosition.y, particle.x - mousePosition.x);
-    const newX = particle.x + Math.cos(angle) * repelStrength * 0.3;
-    const newY = particle.y + Math.sin(angle) * repelStrength * 0.3;
+    const newX = particle.x + Math.cos(angle) * repelStrength * 0.4;
+    const newY = particle.y + Math.sin(angle) * repelStrength * 0.4;
 
     return {
       left: `${Math.max(0, Math.min(100, newX))}%`,
       top: `${Math.max(0, Math.min(100, newY))}%`,
-      transform: `scale(${1 + repelStrength * 0.02})`,
-      transition: 'all 0.3s ease-out',
+      transform: `scale(${1 + repelStrength * 0.03}) rotate(${repelStrength * 2}deg)`,
+      transition: 'all 0.4s ease-out',
+      opacity: particle.opacity + (repelStrength * 0.02),
     };
   };
 
@@ -67,22 +69,55 @@ const HeroSection = () => {
             className="absolute"
             style={getParticleStyle(particle)}
           >
-            {particle.type === 'heart' ? (
+            {particle.type === 'heart' && (
               <Heart 
-                className="text-primary/30 animate-pulse-soft" 
+                className="text-primary/40 animate-pulse-soft" 
                 size={particle.size}
                 style={{
                   filter: 'drop-shadow(0 0 8px hsl(var(--primary) / 0.3))',
-                  animationDelay: `${particle.id * 0.3}s`,
+                  animationDelay: `${particle.id * 0.2}s`,
                 }}
               />
-            ) : (
+            )}
+            {particle.type === 'sparkle' && (
               <Sparkles 
-                className="text-accent/30 animate-pulse-soft" 
+                className="text-accent/40 animate-pulse-soft" 
                 size={particle.size}
                 style={{
                   filter: 'drop-shadow(0 0 8px hsl(var(--accent) / 0.4))',
-                  animationDelay: `${particle.id * 0.3}s`,
+                  animationDelay: `${particle.id * 0.2}s`,
+                }}
+              />
+            )}
+            {particle.type === 'dot' && (
+              <Circle 
+                className="text-secondary/30 animate-pulse-soft" 
+                size={particle.size}
+                fill="currentColor"
+                style={{
+                  filter: 'drop-shadow(0 0 6px hsl(var(--secondary) / 0.3))',
+                  animationDelay: `${particle.id * 0.2}s`,
+                }}
+              />
+            )}
+            {particle.type === 'light' && (
+              <div 
+                className="rounded-full bg-gradient-to-r from-accent/30 to-primary/30 animate-pulse-soft"
+                style={{
+                  width: particle.size,
+                  height: particle.size,
+                  filter: 'blur(1px) drop-shadow(0 0 10px hsl(var(--accent) / 0.5))',
+                  animationDelay: `${particle.id * 0.2}s`,
+                }}
+              />
+            )}
+            {particle.type === 'zap' && (
+              <Zap 
+                className="text-accent/35 animate-pulse-soft" 
+                size={particle.size}
+                style={{
+                  filter: 'drop-shadow(0 0 8px hsl(var(--accent) / 0.4))',
+                  animationDelay: `${particle.id * 0.2}s`,
                 }}
               />
             )}
@@ -90,18 +125,18 @@ const HeroSection = () => {
         ))}
       </div>
       
-      {/* Interactive Floating Hearts */}
+      {/* Additional Floating Hearts Layer */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <Heart
-            key={i}
-            className={`absolute text-primary/20 hover:text-accent/40 transition-all duration-500 animate-pulse-soft cursor-pointer`}
-            size={12 + i * 3}
+            key={`floating-${i}`}
+            className={`absolute text-primary/15 hover:text-accent/30 transition-all duration-500 animate-pulse-soft cursor-pointer`}
+            size={8 + i * 2}
             style={{
-              left: `${5 + i * 6}%`,
-              top: `${10 + i * 5}%`,
-              animationDelay: `${i * 0.4}s`,
-              transform: `rotate(${i * 12}deg)`,
+              left: `${3 + i * 4.8}%`,
+              top: `${8 + i * 4.2}%`,
+              animationDelay: `${i * 0.3}s`,
+              transform: `rotate(${i * 18}deg)`,
             }}
           />
         ))}
