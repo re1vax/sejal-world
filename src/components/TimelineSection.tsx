@@ -34,20 +34,20 @@ const TimelineSection = () => {
   ];
 
   return (
-    <section className="py-20 px-4 romantic-gradient">
+    <section className="py-20 px-4 bg-background">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="font-script text-5xl md:text-6xl text-primary-foreground mb-4">
+          <h2 className="font-script text-5xl md:text-6xl text-primary mb-4">
             Our Love Story
           </h2>
-          <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Every milestone in our journey together has been a blessing, creating the beautiful story that is uniquely ours.
           </p>
         </div>
         
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-px top-0 bottom-0 w-px bg-primary-foreground/30" />
+          <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-px top-0 bottom-0 w-px bg-primary/30" />
           
           <div className="space-y-12">
             {milestones.map((milestone, index) => {
@@ -63,7 +63,7 @@ const TimelineSection = () => {
                   style={{ animationDelay: `${index * 0.3}s` }}
                 >
                   {/* Timeline Dot */}
-                  <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-4 h-4 bg-primary-foreground rounded-full border-4 border-primary z-10" />
+                  <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10" />
                   
                   {/* Content */}
                   <div className={`ml-20 md:ml-0 md:w-1/2 ${isEven ? 'md:pr-8' : 'md:pl-8'}`}>
@@ -71,16 +71,16 @@ const TimelineSection = () => {
                       <CardContent className="p-6">
                         <div className="flex items-center gap-3 mb-3">
                           <Icon className={milestone.color} size={24} />
-                          <span className="text-sm font-medium text-romantic-coral">
+                          <span className="text-sm font-medium text-accent">
                             {milestone.date}
                           </span>
                         </div>
                         
-                        <h3 className="text-xl font-bold text-romantic-pink mb-3 font-script">
+                        <h3 className="text-xl font-bold text-primary mb-3 font-script">
                           {milestone.title}
                         </h3>
                         
-                        <p className="text-card-foreground/90 leading-relaxed">
+                        <p className="text-muted-foreground leading-relaxed">
                           {milestone.description}
                         </p>
                       </CardContent>
