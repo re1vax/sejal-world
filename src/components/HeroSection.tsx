@@ -7,11 +7,12 @@ import heroBackground from "@/assets/hero-background.jpg";
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState(
-    Array.from({ length: 12 }, (_, i) => ({
+    Array.from({ length: 25 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 20 + 10,
+      type: Math.random() > 0.5 ? 'heart' : 'sparkle',
     }))
   );
 
@@ -66,30 +67,41 @@ const HeroSection = () => {
             className="absolute"
             style={getParticleStyle(particle)}
           >
-            <Sparkles 
-              className="text-accent/30 animate-pulse-soft" 
-              size={particle.size}
-              style={{
-                filter: 'drop-shadow(0 0 8px hsl(var(--accent) / 0.4))',
-                animationDelay: `${particle.id * 0.5}s`,
-              }}
-            />
+            {particle.type === 'heart' ? (
+              <Heart 
+                className="text-primary/30 animate-pulse-soft" 
+                size={particle.size}
+                style={{
+                  filter: 'drop-shadow(0 0 8px hsl(var(--primary) / 0.3))',
+                  animationDelay: `${particle.id * 0.3}s`,
+                }}
+              />
+            ) : (
+              <Sparkles 
+                className="text-accent/30 animate-pulse-soft" 
+                size={particle.size}
+                style={{
+                  filter: 'drop-shadow(0 0 8px hsl(var(--accent) / 0.4))',
+                  animationDelay: `${particle.id * 0.3}s`,
+                }}
+              />
+            )}
           </div>
         ))}
       </div>
       
       {/* Interactive Floating Hearts */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(15)].map((_, i) => (
           <Heart
             key={i}
-            className={`absolute text-primary/40 hover:text-accent/60 transition-all duration-500 animate-pulse-soft cursor-pointer`}
-            size={16 + i * 4}
+            className={`absolute text-primary/20 hover:text-accent/40 transition-all duration-500 animate-pulse-soft cursor-pointer`}
+            size={12 + i * 3}
             style={{
-              left: `${10 + i * 12}%`,
-              top: `${15 + i * 8}%`,
-              animationDelay: `${i * 0.7}s`,
-              transform: `rotate(${i * 15}deg)`,
+              left: `${5 + i * 6}%`,
+              top: `${10 + i * 5}%`,
+              animationDelay: `${i * 0.4}s`,
+              transform: `rotate(${i * 12}deg)`,
             }}
           />
         ))}
@@ -98,7 +110,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className="animate-fade-in">
-          <h1 className="font-script text-6xl md:text-8xl lg:text-9xl text-primary mb-6 animate-pulse-soft hover:text-accent transition-colors duration-500 cursor-default drop-shadow-lg">
+          <h1 className="font-script text-6xl md:text-8xl lg:text-9xl text-accent mb-6 animate-pulse-soft hover:text-primary transition-colors duration-500 cursor-default drop-shadow-lg">
             Happy Birthday
           </h1>
           
@@ -125,7 +137,7 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="group border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary hover:scale-105 transition-all duration-300 text-lg px-8 py-4 backdrop-blur-sm bg-background/20"
+                className="group border-2 border-accent text-accent hover:bg-primary hover:text-primary-foreground hover:border-primary hover:scale-105 transition-all duration-300 text-lg px-8 py-4 backdrop-blur-sm bg-background/20"
               >
                 <Gamepad2 className="mr-2 group-hover:rotate-12 transition-transform duration-300" size={20} />
                 Play Games
