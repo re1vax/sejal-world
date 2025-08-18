@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heart, Star, Sparkles, Gift, Music, Camera, Sun, Moon } from "lucide-react";
 
@@ -34,12 +34,15 @@ const MemoryMatch = ({ onComplete }: MemoryMatchProps) => {
     }));
   });
 
+  // Memoize onComplete to prevent unnecessary re-renders
+  const memoizedOnComplete = useCallback(onComplete, [onComplete]);
+
   useEffect(() => {
     if (matchedPairs.length === cardPairs.length && !completed) {
       setCompleted(true);
-      onComplete();
+      memoizedOnComplete();
     }
-  }, [matchedPairs, completed, onComplete]);
+  }, [matchedPairs.length, cardPairs.length, completed, memoizedOnComplete]);
 
   useEffect(() => {
     if (flippedCards.length === 2) {
@@ -47,10 +50,13 @@ const MemoryMatch = ({ onComplete }: MemoryMatchProps) => {
       const firstCard = cards[first];
       const secondCard = cards[second];
 
+      // Increment moves immediately when two cards are flipped
+      setMoves(prev => prev + 1);
+
       if (firstCard.pairId === secondCard.pairId) {
         // Match found
         setTimeout(() => {
-          setMatchedPairs([...matchedPairs, firstCard.pairId]);
+          setMatchedPairs(prev => [...prev, firstCard.pairId]);
           setFlippedCards([]);
         }, 1000);
       } else {
@@ -59,9 +65,8 @@ const MemoryMatch = ({ onComplete }: MemoryMatchProps) => {
           setFlippedCards([]);
         }, 1000);
       }
-      setMoves(moves + 1);
     }
-  }, [flippedCards, cards, matchedPairs, moves]);
+  }, [flippedCards.length, cards]);
 
   const handleCardClick = (index: number) => {
     if (flippedCards.length === 2 || flippedCards.includes(index) || 
