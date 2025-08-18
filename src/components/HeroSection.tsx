@@ -7,13 +7,13 @@ import heroBackground from "@/assets/hero-background.jpg";
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [particles, setParticles] = useState(
-    Array.from({ length: 50 }, (_, i) => ({
+    Array.from({ length: 120 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 25 + 8,
+      size: Math.random() * 30 + 6,
       type: ['heart', 'sparkle', 'dot', 'light', 'zap'][Math.floor(Math.random() * 5)],
-      opacity: Math.random() * 0.6 + 0.2,
+      opacity: Math.random() * 0.7 + 0.1,
     }))
   );
 
