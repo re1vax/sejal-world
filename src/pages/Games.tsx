@@ -8,8 +8,11 @@ import MemoryMatch from "@/components/games/MemoryMatch";
 import RiddleChallenge from "@/components/games/RiddleChallenge";
 
 const Games = () => {
+  console.log("Games component rendering...");
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
   const [completedGames, setCompletedGames] = useState<string[]>([]);
+  
+  console.log("Games state:", { selectedGame, completedGames });
 
   const games = [
     {
