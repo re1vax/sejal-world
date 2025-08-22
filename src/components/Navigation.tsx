@@ -10,7 +10,6 @@ const Navigation = () => {
   const navItems = [
     { name: "Home", path: "/", icon: Home },
     { name: "Games", path: "/games", icon: Gamepad2 },
-    { name: "Location", path: "/location", icon: MapPin },
   ];
 
   const isActive = (path: string) => location.pathname === path;
