@@ -11,7 +11,7 @@ interface Question {
 }
 
 interface LoveQuizProps {
-  onComplete: () => void;
+  onComplete: (score?: number) => void;
 }
 
 const LoveQuiz = ({ onComplete }: LoveQuizProps) => {
@@ -72,7 +72,9 @@ const LoveQuiz = ({ onComplete }: LoveQuizProps) => {
       setAnswered(false);
     } else {
       setShowResult(true);
-      onComplete();
+      // Calculate final score including the current question
+      const finalScore = (selectedAnswer === questions[currentQuestion].correct ? score + 1 : score);
+      onComplete(finalScore * 20); // 20 points per correct answer
     }
   };
 

@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heart, Star, Sparkles, Gift, Music, Camera, Sun, Moon } from "lucide-react";
 
 interface MemoryMatchProps {
-  onComplete: () => void;
+  onComplete: (score?: number) => void;
 }
 
 const MemoryMatch = ({ onComplete }: MemoryMatchProps) => {
@@ -40,9 +40,12 @@ const MemoryMatch = ({ onComplete }: MemoryMatchProps) => {
   useEffect(() => {
     if (matchedPairs.length === cardPairs.length && !completed) {
       setCompleted(true);
-      memoizedOnComplete();
+      // Score based on efficiency (fewer moves = higher score)
+      const maxScore = 200;
+      const efficiency = Math.max(0, maxScore - moves * 5);
+      memoizedOnComplete(efficiency);
     }
-  }, [matchedPairs.length, cardPairs.length, completed, memoizedOnComplete]);
+  }, [matchedPairs.length, cardPairs.length, completed, moves, memoizedOnComplete]);
 
   useEffect(() => {
     if (flippedCards.length === 2) {

@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, Star, Trophy, Gift, Sparkles } from "lucide-react";
+import { Heart, Star, Trophy, Gift, Sparkles, Zap } from "lucide-react";
 import LoveQuiz from "@/components/games/LoveQuiz";
 import WordPuzzle from "@/components/games/WordPuzzle";
 import MemoryMatch from "@/components/games/MemoryMatch";
 import RiddleChallenge from "@/components/games/RiddleChallenge";
+import DinoRun from "@/components/games/DinoRun";
 
 const Games = () => {
-  console.log("Games component rendering...");
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
   const [completedGames, setCompletedGames] = useState<string[]>([]);
-  
-  console.log("Games state:", { selectedGame, completedGames });
+  const [gameScores, setGameScores] = useState<{[key: string]: number}>({});
 
   const games = [
     {
@@ -47,12 +46,33 @@ const Games = () => {
       color: "text-emerald-400",
       component: RiddleChallenge,
     },
+    {
+      id: "dino",
+      title: "Dino Love Run",
+      description: "Help our romantic dino avoid broken hearts!",
+      icon: Zap,
+      color: "text-indigo-400",
+      component: DinoRun,
+    },
   ];
 
-  const handleGameComplete = (gameId: string) => {
+  const handleGameComplete = (gameId: string, score?: number) => {
     if (!completedGames.includes(gameId)) {
       setCompletedGames([...completedGames, gameId]);
     }
+    if (score !== undefined) {
+      setGameScores(prev => ({ ...prev, [gameId]: Math.max(prev[gameId] || 0, score) }));
+    }
+  };
+
+  const getTotalScore = () => {
+    return Object.values(gameScores).reduce((total, score) => total + score, 0);
+  };
+
+  const getRequiredScore = () => 500; // Total score needed to reveal location
+  
+  const canRevealLocation = () => {
+    return getTotalScore() >= getRequiredScore();
   };
 
   if (selectedGame) {
@@ -75,7 +95,7 @@ const Games = () => {
               </h1>
               <p className="text-muted-foreground">{game.description}</p>
             </div>
-            <GameComponent onComplete={() => handleGameComplete(game.id)} />
+            <GameComponent onComplete={(score) => handleGameComplete(game.id, score)} />
           </div>
         </div>
       );
@@ -90,17 +110,37 @@ const Games = () => {
             Fun Games & Puzzles
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Let's play some romantic games together! Complete them all for a special surprise.
+            Let's play some romantic games together! Achieve high scores to unlock the secret location.
           </p>
           
-          {completedGames.length > 0 && (
-            <div className="mt-6 flex items-center justify-center gap-2">
-              <Trophy className="text-amber-400" size={24} />
+          <div className="mt-6 space-y-3">
+            {completedGames.length > 0 && (
+              <div className="flex items-center justify-center gap-2">
+                <Trophy className="text-amber-400" size={24} />
+                <span className="text-primary font-medium">
+                  {completedGames.length} of {games.length} games completed!
+                </span>
+              </div>
+            )}
+            
+            <div className="flex items-center justify-center gap-2">
+              <Star className="text-accent" size={24} />
               <span className="text-primary font-medium">
-                {completedGames.length} of {games.length} games completed!
+                Total Score: {getTotalScore()} / {getRequiredScore()}
               </span>
             </div>
-          )}
+            
+            {canRevealLocation() && (
+              <div className="animate-pulse-soft">
+                <div className="flex items-center justify-center gap-2 text-romantic-gold">
+                  <Gift className="animate-bounce" size={24} />
+                  <span className="font-medium">
+                    Location Unlocked! 🎉
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -144,23 +184,26 @@ const Games = () => {
           })}
         </div>
 
-        {completedGames.length === games.length && (
+        {canRevealLocation() && (
           <div className="mt-16 text-center animate-fade-in">
-            <Card className="max-w-md mx-auto romantic-shadow border-primary/20">
+            <Card className="max-w-md mx-auto romantic-shadow border-primary/20 bg-gradient-to-br from-romantic-pink/10 to-romantic-coral/10">
               <CardContent className="p-8">
                 <Heart className="text-primary mx-auto mb-4 animate-pulse-soft" size={48} />
                 <h3 className="text-2xl font-script text-primary mb-4">
-                  Congratulations!
+                  Amazing Achievement!
                 </h3>
-                <p className="text-muted-foreground mb-6">
-                  You've completed all the games! You're amazing, just like always. ❤️
+                <p className="text-muted-foreground mb-2">
+                  You've earned enough points to unlock our secret location! 
+                </p>
+                <p className="text-romantic-gold font-medium mb-6">
+                  Total Score: {getTotalScore()} points! 🌟
                 </p>
                 <Button 
                   onClick={() => window.location.href = "/location"}
-                  className="romantic-shadow hover:glow-shadow"
+                  className="romantic-shadow hover:glow-shadow bg-gradient-to-r from-romantic-pink to-romantic-coral hover:from-romantic-coral hover:to-romantic-pink"
                 >
                   <Gift className="mr-2" size={20} />
-                  Claim Your Surprise
+                  Discover Our Secret Place
                 </Button>
               </CardContent>
             </Card>

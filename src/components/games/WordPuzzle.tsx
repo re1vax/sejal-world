@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Heart, Star } from "lucide-react";
 
 interface WordPuzzleProps {
-  onComplete: () => void;
+  onComplete: (score?: number) => void;
 }
 
 const WordPuzzle = ({ onComplete }: WordPuzzleProps) => {
@@ -37,7 +37,7 @@ const WordPuzzle = ({ onComplete }: WordPuzzleProps) => {
   useEffect(() => {
     if (foundWords.length === wordsToFind.length && !completed) {
       setCompleted(true);
-      onComplete();
+      onComplete(foundWords.length * 15); // 15 points per word found
     }
   }, [foundWords, completed, onComplete]);
 

@@ -12,7 +12,7 @@ interface Riddle {
 }
 
 interface RiddleChallengeProps {
-  onComplete: () => void;
+  onComplete: (score?: number) => void;
 }
 
 const RiddleChallenge = ({ onComplete }: RiddleChallengeProps) => {
@@ -71,7 +71,7 @@ const RiddleChallenge = ({ onComplete }: RiddleChallengeProps) => {
       setShowHint(false);
     } else {
       setCompleted(true);
-      onComplete();
+      onComplete(solvedRiddles.length * 25 + 25); // 25 points per riddle + bonus
     }
   };
 
