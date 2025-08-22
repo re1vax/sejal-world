@@ -58,8 +58,8 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${heroBackground})` }}
       />
       
-      {/* Romantic Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/60 via-primary/30 to-accent/40" />
+      {/* Dark Romantic Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-black/60" />
       
       {/* Cursor-Repelling Particles */}
       <div className="absolute inset-0 pointer-events-none">
@@ -145,15 +145,15 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className="animate-fade-in">
-          <h1 className="font-script text-6xl md:text-8xl lg:text-9xl text-accent mb-6 animate-pulse-soft hover:text-primary transition-colors duration-500 cursor-default drop-shadow-lg">
+          <h1 className="font-script text-6xl md:text-8xl lg:text-9xl text-white mb-6 animate-pulse-soft hover:text-accent transition-colors duration-500 cursor-default drop-shadow-lg">
             Happy Birthday
           </h1>
           
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-8 hover:text-accent transition-colors duration-300 cursor-default drop-shadow-md">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8 hover:text-accent transition-colors duration-300 cursor-default drop-shadow-md">
             My Beautiful Love
           </h2>
           
-          <p className="text-xl md:text-2xl text-primary-foreground/90 mb-12 max-w-2xl mx-auto leading-relaxed hover:text-primary-foreground transition-colors duration-300 drop-shadow-sm">
+          <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed hover:text-white transition-colors duration-300 drop-shadow-sm">
             Today we celebrate the most amazing person in my world. 
             Every moment with you is a gift, and I'm so grateful for your love.
           </p>
@@ -172,7 +172,7 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="group border-2 border-accent text-accent hover:bg-primary hover:text-primary-foreground hover:border-primary hover:scale-105 transition-all duration-300 text-lg px-8 py-4 backdrop-blur-sm bg-background/20"
+                className="group border-2 border-white/60 text-white hover:bg-white/10 hover:text-white hover:border-white hover:scale-105 transition-all duration-300 text-lg px-8 py-4 backdrop-blur-sm bg-white/5"
               >
                 <Gamepad2 className="mr-2 group-hover:rotate-12 transition-transform duration-300" size={20} />
                 Play Games
@@ -185,8 +185,8 @@ const HeroSection = () => {
       {/* Interactive Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-[bounce_3s_ease-in-out_infinite] hover:scale-110 transition-transform duration-300 cursor-pointer" 
            onClick={() => document.getElementById('memories')?.scrollIntoView({ behavior: 'smooth' })}>
-        <div className="w-6 h-10 border-2 border-primary/60 hover:border-primary rounded-full flex justify-center transition-colors duration-300">
-          <div className="w-1 h-3 bg-primary/60 hover:bg-primary rounded-full mt-2 animate-pulse transition-colors duration-300" />
+        <div className="w-6 h-10 border-2 border-white/60 hover:border-white rounded-full flex justify-center transition-colors duration-300">
+          <div className="w-1 h-3 bg-white/60 hover:bg-white rounded-full mt-2 animate-pulse transition-colors duration-300" />
         </div>
       </div>
     </section>
