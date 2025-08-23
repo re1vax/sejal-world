@@ -200,6 +200,9 @@ const HeroSection = () => {
           <div className="w-1 h-3 bg-white/60 hover:bg-white rounded-full mt-2 animate-pulse transition-colors duration-300" />
         </div>
       </div>
+      
+      {/* Smooth Transition Gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none z-20" />
     </section>
   );
 };
