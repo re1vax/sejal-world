@@ -12,7 +12,7 @@ const HeroSection = () => {
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 30 + 6,
-      type: ['heart', 'sparkle', 'dot', 'light', 'zap'][Math.floor(Math.random() * 5)],
+      type: ['heart', 'heart', 'sparkle', 'dot', 'light', 'bubble', 'heart', 'bubble'][Math.floor(Math.random() * 8)],
       opacity: Math.random() * 0.7 + 0.1,
     }))
   );
@@ -107,6 +107,17 @@ const HeroSection = () => {
                   width: particle.size,
                   height: particle.size,
                   filter: 'blur(1px) drop-shadow(0 0 10px hsl(var(--accent) / 0.5))',
+                  animationDelay: `${particle.id * 0.2}s`,
+                }}
+              />
+            )}
+            {particle.type === 'bubble' && (
+              <div 
+                className="rounded-full border-2 border-accent/30 bg-accent/10 animate-pulse-soft"
+                style={{
+                  width: particle.size,
+                  height: particle.size,
+                  filter: 'drop-shadow(0 0 6px hsl(var(--accent) / 0.2))',
                   animationDelay: `${particle.id * 0.2}s`,
                 }}
               />
