@@ -149,8 +149,8 @@ const HeroSection = () => {
             Happy Birthday
           </h1>
           
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-8 hover:text-accent transition-colors duration-300 cursor-default drop-shadow-md">
-            My Beautiful Love
+          <h2 className="font-script text-4xl md:text-6xl lg:text-7xl text-accent mb-8 hover:text-primary transition-colors duration-300 cursor-default drop-shadow-lg bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent hover:from-primary hover:to-accent">
+            Sejal
           </h2>
           
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed hover:text-white transition-colors duration-300 drop-shadow-sm">
