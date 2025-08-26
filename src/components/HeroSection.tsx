@@ -165,8 +165,7 @@ const HeroSection = () => {
           </h2>
           
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed hover:text-white transition-colors duration-300 drop-shadow-sm">
-            Today we celebrate the most amazing person in my world. 
-            Every moment with you is a gift, and I'm so grateful for your love.
+            Celebrating the most amazing person in my world.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
