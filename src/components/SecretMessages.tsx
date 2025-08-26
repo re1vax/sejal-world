@@ -43,17 +43,17 @@ const SecretMessages = () => {
                 variant="ghost"
                 size="icon"
                 className={`
-                  w-12 h-12 rounded-full transition-all duration-500 hover:scale-110
+                  w-8 h-8 rounded-full transition-all duration-500 hover:scale-110 opacity-20 hover:opacity-100
                   ${isDiscovered 
-                    ? 'bg-primary/20 border-2 border-primary/50 text-primary' 
-                    : 'bg-accent/10 border-2 border-accent/30 text-accent hover:bg-accent/20'
+                    ? 'bg-primary/10 border border-primary/30 text-primary opacity-60' 
+                    : 'bg-accent/5 border border-accent/20 text-accent hover:bg-accent/10'
                   }
-                  romantic-shadow hover:glow-shadow animate-pulse-soft
+                  hover:glow-shadow
                 `}
                 onClick={() => handleMessageClick(message)}
               >
                 <Icon 
-                  size={20} 
+                  size={14} 
                   className={`${isDiscovered ? 'animate-pulse' : ''}`}
                 />
               </Button>

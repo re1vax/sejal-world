@@ -35,42 +35,20 @@ const CountdownTimer = () => {
   return (
     <div className="fixed top-20 right-4 z-40">
       <Card className="bg-background/90 backdrop-blur-md border-primary/30 romantic-shadow hover:glow-shadow transition-all duration-300">
-        <CardContent className="p-4">
-          <div className="flex items-center gap-2 mb-3">
-            <Clock className="text-primary animate-pulse" size={20} />
-            <h3 className="font-script text-lg text-primary">Surprise Timer</h3>
-            <Sparkles className="text-accent animate-pulse" size={16} />
-          </div>
-          
+        <CardContent className="p-3">
           {!isTimeUp ? (
-            <>
-              <div className="grid grid-cols-2 gap-2 mb-2">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">{timeLeft.days}</div>
-                  <div className="text-xs text-muted-foreground">Days</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">{timeLeft.hours}</div>
-                  <div className="text-xs text-muted-foreground">Hours</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">{timeLeft.minutes}</div>
-                  <div className="text-xs text-muted-foreground">Min</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">{timeLeft.seconds}</div>
-                  <div className="text-xs text-muted-foreground">Sec</div>
-                </div>
+            <div className="text-center">
+              <div className="text-lg font-bold text-primary mb-1">
+                {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
               </div>
-              <p className="text-xs text-center text-muted-foreground">
-                Until your surprise unlocks ✨
+              <p className="text-xs text-muted-foreground">
+                left to unlock your surprise
               </p>
-            </>
+            </div>
           ) : (
             <div className="text-center">
-              <Heart className="text-primary mx-auto mb-2 animate-pulse" size={24} />
-              <p className="text-primary font-script text-lg">Ready to be surprised?</p>
-              <p className="text-xs text-accent">Your gift awaits! 🎁</p>
+              <Heart className="text-primary mx-auto mb-1 animate-pulse" size={20} />
+              <p className="text-primary font-script text-sm">Ready to be surprised?</p>
             </div>
           )}
         </CardContent>
