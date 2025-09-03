@@ -157,7 +157,7 @@ const HeroSection = () => {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className="animate-fade-in">
           <h1 className="font-script text-6xl md:text-8xl lg:text-9xl text-white mb-6 animate-pulse-soft hover:text-accent transition-colors duration-500 cursor-default drop-shadow-lg">
-            Happy Birthday
+            Happy
           </h1>
           
           <h2 className="font-script text-4xl md:text-6xl lg:text-7xl text-accent mb-8 hover:text-primary transition-colors duration-300 cursor-default drop-shadow-lg bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent hover:from-primary hover:to-accent">

@@ -89,7 +89,7 @@ const ReasonsILoveYou = () => {
 				{/* Cards Layered in Circular Spread */}
 				<div
 					ref={containerRef}
-					className="relative w-full flex items-center justify-center"
+					className="relative w-full flex"
 					style={{
 						height: isMobile ? "480px" : "700px",
 						maxHeight: isMobile ? "95vh" : undefined,
