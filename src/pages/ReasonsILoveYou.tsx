@@ -1,169 +1,261 @@
-import { useState, useEffect } from "react";
-import { Heart, Sparkles, Star } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 
+const reasons = [
+	"Your laugh makes my whole world brighter",
+	"The way you scrunch your nose when you concentrate",
+	"How you always know exactly what I'm thinking",
+	"Aapki \"harkate\" - puts a smile on my face every time",
+	"The way my heart races when I'm with you",
+	"How you make ordinary moments feel magical",
+	"The way you treat animals with love and kindness",
+	"The way you talk about our future together",
+	"How you remember the tiniest details about people",
+	"Your beautiful smile that lights up any room",
+	"The way you get excited about little things (happy dances!)",
+	"How you make me want to be the best version of myself",
+	"Your beautiful eyes that tell a thousand stories",
+	"The way you care for others before yourself",
+	"How you love me exactly as I am",
+	"The way you snuggle closer in your sleep",
+	"The way you make my empty apartment feel like home",
+	"The way you support my dreams",
+	"How you make me feel like the luckiest person alive",
+	"The way you hold my hand like you never wanna let go",
+	"How you believe in us even when times are tough",
+	"Because you're you, and that's all that matters",
+];
+
+function getCircularPosition(idx: number, total: number, isMobile: boolean) {
+	// Arrange cards in a circular spread, centered
+	const angle = (2 * Math.PI * idx) / total;
+	const radius = isMobile ? 38 : 220; // px
+	const centerX = isMobile ? 50 : 50; // percent
+	const centerY = isMobile ? 50 : 50; // percent
+	const offsetX = Math.cos(angle) * radius;
+	const offsetY = Math.sin(angle) * radius;
+	return {
+		left: `calc(${centerX}% + ${offsetX}px)`,
+		top: `calc(${centerY}% + ${offsetY}px)`,
+		transform: isMobile
+			? "translate(-50%, -50%)"
+			: "translate(-50%, -50%)"
+	};
+}
+
 const ReasonsILoveYou = () => {
-  const [visibleReasons, setVisibleReasons] = useState<number[]>([]);
+	const [visibleReasons, setVisibleReasons] = useState<number[]>([]);
+	const [centerIdx, setCenterIdx] = useState(reasons.length - 1);
+	const [animationDone, setAnimationDone] = useState(false);
+	const containerRef = useRef<HTMLDivElement>(null);
 
-  const reasons = [
-    "Your laugh makes my whole world brighter",
-    "The way you scrunch your nose when you concentrate",
-    "How you always know exactly what to say",
-    "Your terrible jokes that somehow make me smile",
-    "The way you hum while doing everyday things",
-    "How you make ordinary moments feel magical",
-    "Your kindness to everyone around you",
-    "The way you steal my hoodies and look amazing in them",
-    "How you remember the tiniest details about people",
-    "Your passion for things you love",
-    "The way you dance when you think nobody's watching",
-    "How you make me want to be a better person",
-    "Your beautiful eyes that tell a thousand stories",
-    "The way you care for others before yourself",
-    "How you make even rainy days feel sunny",
-    "Your incredible sense of humor",
-    "The way you snuggle closer in your sleep",
-    "How you turn house chores into fun activities",
-    "Your amazing cooking experiments (even the failed ones)",
-    "The way you support my dreams",
-    "How you make me feel like the luckiest person alive",
-    "Your random acts of kindness",
-    "The way you sing in the car",
-    "How you always see the good in people",
-    "Your beautiful smile that lights up any room",
-    "The way you get excited about little things",
-    "How you make me laugh until my stomach hurts",
-    "Your incredible strength and resilience",
-    "The way you love with your whole heart",
-    "How you make every day an adventure",
-    "Your perfect imperfections that make you uniquely you",
-    "The way you hold my hand like you never want to let go",
-    "How you believe in us even when times are tough",
-    "Your beautiful soul that shines through everything you do",
-    "The way you make our house feel like home",
-    "How you love me exactly as I am",
-    "Your incredible ability to make me feel understood",
-    "The way you surprise me every single day",
-    "How you make love feel like the greatest adventure",
-    "Because you're you, and that's more than enough"
-  ];
+	// Detect mobile
+	const [isMobile, setIsMobile] = useState(false);
+	useEffect(() => {
+		const checkMobile = () => setIsMobile(window.innerWidth < 640);
+		checkMobile();
+		window.addEventListener("resize", checkMobile);
+		return () => window.removeEventListener("resize", checkMobile);
+	}, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setVisibleReasons(prev => {
-        if (prev.length < reasons.length) {
-          const next = prev.length;
-          return [...prev, next];
-        }
-        return prev;
-      });
-    }, 300);
+	// Reveal cards one by one at intervals
+	useEffect(() => {
+		if (visibleReasons.length < reasons.length) {
+			const timeout = setTimeout(() => {
+				setVisibleReasons((prev) => [...prev, prev.length]);
+			}, 700);
+			return () => clearTimeout(timeout);
+		} else {
+			setAnimationDone(true);
+		}
+	}, [visibleReasons.length]);
 
-    return () => clearInterval(interval);
-  }, [reasons.length]);
+	// Card click handler for swapping
+	const handleCardClick = (idx: number) => {
+		if (!animationDone || idx === centerIdx) return;
+		setCenterIdx(idx);
+	};
 
-  const getRandomPosition = (index: number) => {
-    // Use index to create consistent but varied positioning
-    const x = (index * 71) % 85 + 5; // 5-90%
-    const y = (index * 97) % 80 + 10; // 10-90%
-    return { left: `${x}%`, top: `${y}%` };
-  };
+	return (
+		<div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/10 pt-20 relative overflow-hidden">
+			<div className="max-w-6xl mx-auto px-2 sm:px-4 py-8">
+				{/* Header */}
+				<div className="text-center mb-12">
+					<h1 className="font-script text-4xl md:text-6xl text-primary mb-4 animate-fade-in drop-shadow">
+						22 Reasons I Love You
+					</h1>
+				</div>
 
-  const getRandomIcon = (index: number) => {
-    const icons = [Heart, Sparkles, Star];
-    return icons[index % icons.length];
-  };
+				{/* Cards Layered in Circular Spread */}
+				<div
+					ref={containerRef}
+					className="relative w-full flex items-center justify-center"
+					style={{
+						height: isMobile ? "480px" : "700px",
+						maxHeight: isMobile ? "95vh" : undefined,
+						overflow: "hidden",
+						position: "relative",
+					}}
+				>
+					{visibleReasons.map((idx) => {
+						const isCenter = idx === centerIdx;
+						const zIndex = isCenter ? 50 : idx + 1;
+						const pos = isCenter
+							? { left: "50%", top: "50%", transform: "translate(-50%, -50%)" }
+							: getCircularPosition(idx, reasons.length, isMobile);
+						const cardClass = isCenter
+							? "center-card"
+							: "reason-card";
+						return (
+							<Card
+								key={idx}
+								className={`absolute ${cardClass} animate-reason-fade transition-all duration-500 rounded-2xl cursor-pointer`}
+								style={{
+									...pos,
+									zIndex,
+									width: isCenter
+										? isMobile
+											? "80vw"
+											: "370px"
+										: isMobile
+											? "48vw"
+											: "210px",
+									minHeight: isCenter
+										? isMobile
+											? "90px"
+											: "200px"
+										: isMobile
+											? "48px"
+											: "100px",
+									animationDelay: `${0.2 + idx * 0.15}s`,
+									boxShadow: isCenter
+										? "0 12px 48px 0 rgba(0,0,0,0.38)"
+										: "0 4px 16px 0 rgba(0,0,0,0.18)",
+									fontWeight: isCenter ? 700 : 500,
+									fontSize: isCenter
+										? isMobile
+											? "1rem"
+											: "1.45rem"
+										: isMobile
+											? "0.85rem"
+											: "1rem",
+									padding: isCenter
+										? isMobile
+											? "0.8rem 0.5rem"
+											: "2.5rem 1.7rem"
+										: isMobile
+											? "0.4rem 0.3rem"
+											: "1rem 0.7rem",
+									transition: "all 0.4s cubic-bezier(.4,0,.2,1)",
+									background: "linear-gradient(120deg, #23232b 0%, #18181f 100%)",
+									border: isCenter ? "2px solid #ffb6d5" : "1px solid #23232b",
+									color: isCenter ? "#ffe6f2" : "#eaeaea",
+									textShadow: isCenter ? "0 2px 12px #18181f" : undefined,
+									overflowWrap: "break-word",
+									wordBreak: "break-word",
+								}}
+								onClick={() => handleCardClick(idx)}
+							>
+								<div className="w-full text-center break-words">
+									{reasons[idx]}
+								</div>
+							</Card>
+						);
+					})}
+				</div>
 
-  const getRandomSize = (index: number) => {
-    const sizes = ["text-sm", "text-base", "text-lg"];
-    return sizes[index % sizes.length];
-  };
+				{/* Completion Message */}
+				{animationDone && (
+					<div className="text-center mt-16">
+						<Card className="max-w-xl mx-auto bg-gradient-to-br from-primary/10 via-card/90 to-accent/10 backdrop-blur-lg border-0 shadow-2xl rounded-3xl">
+							<div className="p-10">
+								<h2 className="font-script text-2xl text-primary mb-4 drop-shadow">
+									And there are countless more...
+								</h2>
+								<p className="text-lg text-foreground leading-relaxed">
+									Every single day, I discover new reasons to love you.
+									<br />
+									14324!{" "}
+									<span className="text-accent">💕</span>
+								</p>
+								<p className="mt-6 text-muted-foreground text-base">
+									Tap any reason to bring it to the center!
+								</p>
+							</div>
+						</Card>
+					</div>
+				)}
+			</div>
 
-  return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5 pt-20">
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-12 relative z-10">
-          <h1 className="font-script text-4xl md:text-6xl text-primary mb-4 animate-fade-in">
-            40 Reasons I Love You
-          </h1>
-          <p className="text-lg text-muted-foreground mb-6">
-            Watch as each reason appears, just like how my love for you grows every day ✨
-          </p>
-          <div className="flex justify-center items-center gap-2">
-            <Heart className="text-primary animate-pulse" size={20} />
-            <span className="text-accent font-medium">
-              {visibleReasons.length} / {reasons.length} reasons revealed
-            </span>
-            <Heart className="text-primary animate-pulse" size={20} />
-          </div>
-        </div>
+			{/* Background hearts with blur/glow */}
+			<div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+				{[...Array(15)].map((_, i) => (
+					<span
+						key={`bg-heart-${i}`}
+						className="absolute text-primary/10 blur-[2px] drop-shadow-lg"
+						style={{
+							left: `${(i * 7) % 100}%`,
+							top: `${(i * 11) % 100}%`,
+							fontSize: `${44 + i * 4}px`,
+							animation: `fadeInBgHeart 2s ${i * 0.5}s both`,
+						}}
+					>
+						{/* Unicode heart for lightweight background */}
+						&#10084;
+					</span>
+				))}
+			</div>
 
-        {/* Floating Reasons */}
-        <div className="relative min-h-[80vh]">
-          {visibleReasons.map((index) => {
-            const Icon = getRandomIcon(index);
-            const position = getRandomPosition(index);
-            const size = getRandomSize(index);
-            
-            return (
-              <Card
-                key={index}
-                className="absolute transform -translate-x-1/2 -translate-y-1/2 max-w-xs animate-fade-in bg-card/80 backdrop-blur-sm border-primary/20 romantic-shadow hover:glow-shadow transition-all duration-500 hover:scale-105"
-                style={position}
-              >
-                <div className="p-4 text-center">
-                  <Icon className="text-primary mx-auto mb-2 animate-pulse-soft" size={20} />
-                  <p className={`text-foreground font-medium leading-relaxed ${size}`}>
-                    {reasons[index]}
-                  </p>
-                  <div className="flex justify-center mt-2">
-                    <span className="text-xs text-muted-foreground">#{index + 1}</span>
-                  </div>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-
-        {/* Completion Message */}
-        {visibleReasons.length === reasons.length && (
-          <div className="text-center mt-12 relative z-10">
-            <Card className="max-w-2xl mx-auto bg-card/90 backdrop-blur-sm border-primary/30 romantic-shadow">
-              <div className="p-8">
-                <Heart className="text-primary mx-auto mb-4 animate-pulse" size={32} />
-                <h2 className="font-script text-2xl text-primary mb-4">
-                  And there are countless more...
-                </h2>
-                <p className="text-lg text-foreground leading-relaxed">
-                  Every single day, I discover new reasons to love you. 
-                  You are my heart, my soul, my everything. 
-                  Happy Birthday, my love! 💕
-                </p>
-              </div>
-            </Card>
-          </div>
-        )}
-      </div>
-
-      {/* Background hearts */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        {[...Array(15)].map((_, i) => (
-          <Heart
-            key={`bg-heart-${i}`}
-            className="absolute text-primary/5 animate-pulse-soft"
-            size={40 + i * 4}
-            style={{
-              left: `${(i * 7) % 100}%`,
-              top: `${(i * 11) % 100}%`,
-              animationDelay: `${i * 0.5}s`,
-              transform: `rotate(${i * 15}deg)`,
-            }}
-          />
-        ))}
-      </div>
-    </div>
-  );
+			<style jsx>{`
+				.reason-card {
+					transition: box-shadow 0.3s, transform 0.3s;
+					cursor: pointer;
+				}
+				.center-card {
+					transition: box-shadow 0.4s, transform 0.4s;
+					cursor: pointer;
+					background: linear-gradient(120deg, #23232b 0%, #18181f 100%);
+					border: 2px solid #ffb6d5;
+					color: #ffe6f2;
+					text-shadow: 0 2px 12px #18181f;
+				}
+				.animate-reason-fade {
+					animation: reasonPopIn 0.6s cubic-bezier(0.5, 1.5, 0.5, 1) both;
+				}
+				@keyframes reasonPopIn {
+					0% {
+						opacity: 0;
+						transform: scale(0.7) translateY(40px);
+						filter: blur(6px);
+					}
+					60% {
+						opacity: 1;
+						transform: scale(1.08) translateY(-6px);
+						filter: blur(0px);
+					}
+					80% {
+						transform: scale(0.97) translateY(2px);
+					}
+					100% {
+						opacity: 1;
+						transform: scale(1) translateY(0);
+						filter: blur(0px);
+					}
+				}
+				.animate-fade-in {
+					animation: fadeIn 1s ease;
+				}
+				@keyframes fadeIn {
+					from { opacity: 0; }
+					to { opacity: 1; }
+				}
+				@keyframes fadeInBgHeart {
+					from { opacity: 0; }
+					to { opacity: 0.5; }
+				}
+			`}</style>
+		</div>
+	);
 };
 
 export default ReasonsILoveYou;

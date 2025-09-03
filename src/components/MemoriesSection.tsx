@@ -1,26 +1,29 @@
 import { Card, CardContent } from "@/components/ui/card";
 import coupleImage from "@/assets/couple-silhouette.jpg";
 import birthdayCake from "@/assets/birthday-cake.jpg";
+import firstmeet from "@/assets/firstmeet.jpg";
+import firsthangout from "@/assets/firsthangout.jpg";
+import firstdate from "@/assets/firstdate.jpg";
 
 const MemoriesSection = () => {
   const memories = [
     {
-      title: "Our First Date",
-      description: "The day my life changed forever. Your smile lit up the entire café.",
-      date: "March 15, 2023",
-      image: coupleImage,
+      title: "First Meeting",
+      description: "The day I realized photos don't do you justice at all. You were that much more beautiful in person!",
+      date: "February 23, 2025",
+      image: firstmeet,
     },
     {
-      title: "Your Special Day",
-      description: "Celebrating another year of your beautiful existence and all the joy you bring.",
-      date: "Today",
-      image: birthdayCake,
+      title: "First Proper Hangout With Da Gang",
+      description: "PICNIC!!!!",
+      date: "February 23, 2025",
+      image: firsthangout,
     },
     {
-      title: "Every Day Together",
-      description: "From morning coffee to goodnight kisses, every moment is precious.",
-      date: "Always",
-      image: coupleImage,
+      title: "First Date",
+      description: "I will never forget that day, ever. Drop dead gorgeous you. Drop dead nervous me. Loveliest 6 hours of my life!",
+      date: "April 1, 2025",
+      image: firstdate,
     },
   ];
 
@@ -29,10 +32,10 @@ const MemoriesSection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="font-script text-5xl md:text-6xl text-primary mb-4">
-            Our Beautiful Memories
+            With You
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Every moment we've shared has been a treasure, creating a tapestry of love and laughter.
+            Every moment is beautiful - magical
           </p>
         </div>
         

@@ -15,29 +15,29 @@ const WordPuzzle = ({ onComplete }: WordPuzzleProps) => {
 
   // Words hidden in the puzzle (horizontal, vertical, diagonal)
   const wordsToFind = [
-    "LOVE", "HEART", "KISS", "HUG", "SMILE", "DREAM", "FOREVER", "BEAUTIFUL"
+    "MISMISI", "CHIJJI", "CUTU", "BEBU", "NOM", "GORGEOUS", "PRETTIEST", "NINCOMPOOP"
   ];
 
   // 12x12 grid with hidden words
   const grid = [
-    "LOVETIMEDREA",
-    "HEARTQWERTYU",
-    "ASDFGHKISSQW",
-    "ZXCVBNMASDFG",
-    "SMILEQWERTYU",
-    "ASDFGHUJKLZX",
-    "HUGQWERTYUIO",
+    "LOVETMISMISI",
+    "HEARTQWERTYP",
+    "ASDGORGEOUSR",
+    "ZXCVBNOMSDFE",
+    "NINCOMPOOPYT",
+    "ASDFGHUJKLZT",
+    "HUGQWERTYUII",
     "ASDFGHJKLQWE",
-    "FOREVERTYUIO",
-    "ASDFGHJKLZXC",
-    "BEAUTIFULQWE",
-    "ZXCVBNMASDFG"
+    "FORUVERTYUCS",
+    "ASBFCHIJJIUT",
+    "BEAUTIFULQTT",
+    "BXCVBNMASDUF"
   ];
 
   useEffect(() => {
     if (foundWords.length === wordsToFind.length && !completed) {
       setCompleted(true);
-      onComplete(foundWords.length * 15); // 15 points per word found
+      onComplete(foundWords.length * 250); // 200 points per word found
     }
   }, [foundWords, completed, onComplete]);
 
@@ -91,10 +91,10 @@ const WordPuzzle = ({ onComplete }: WordPuzzleProps) => {
           <Star className="text-amber-400 mx-auto mb-6 animate-pulse-soft" size={64} />
           <h2 className="text-3xl font-script text-primary mb-4">Puzzle Solved!</h2>
           <p className="text-xl mb-4">
-            You found all {wordsToFind.length} romantic words!
+            You found all {wordsToFind.length} the words!
           </p>
           <p className="text-muted-foreground mb-6">
-            Every word you found represents a piece of our beautiful love story. ❤️
+            These are our catchphrases :D
           </p>
           <div className="bg-primary/10 rounded-lg p-4">
             <p className="text-primary font-medium">
@@ -114,7 +114,7 @@ const WordPuzzle = ({ onComplete }: WordPuzzleProps) => {
             Find the Hidden Words
           </CardTitle>
           <p className="text-center text-muted-foreground">
-            Click and drag to select words. Find all {wordsToFind.length} romantic words!
+            Click and drag to select words. Find all {wordsToFind.length}!
           </p>
         </CardHeader>
         <CardContent>

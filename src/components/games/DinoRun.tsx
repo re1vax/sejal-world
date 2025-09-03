@@ -135,7 +135,7 @@ const DinoRun: React.FC<DinoRunProps> = ({ onComplete }) => {
         <div className="text-center mb-4">
           <h3 className="text-2xl font-script text-primary mb-2">Dino Love Run</h3>
           <p className="text-muted-foreground mb-4">
-            Help our romantic dino collect hearts! Press SPACE or ↑ to jump.
+            Help our dino wannabee collect hearts! Press SPACE or ↑ to jump.
           </p>
           <div className="text-lg font-medium text-primary">Score: {score}</div>
         </div>
@@ -207,9 +207,9 @@ const DinoRun: React.FC<DinoRunProps> = ({ onComplete }) => {
         </div>
 
         <div className="mt-4 text-center text-sm text-muted-foreground">
-          Avoid the broken hearts! Collect points to unlock the secret location.
+          Avoid the broken hearts! Collect points to unlock the surprise.
           <br />
-          Target: 100 points for location reveal
+          Target: 9000 points for location reveal
         </div>
       </CardContent>
     </Card>

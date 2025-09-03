@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Copy, Heart, Gift, Navigation } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import locationSong from "@/assets/maand.m4a";
 
 const Location = () => {
   const { toast } = useToast();
@@ -10,10 +11,10 @@ const Location = () => {
   
   // Replace these with your actual coordinates
   const coordinates = {
-    lat: "40.7589",
-    lng: "-73.9851",
-    address: "Our Special Place",
-    description: "The rooftop where we first said 'I love you' under the stars"
+    lat: "28.6892758",
+    lng: "77.3367455",
+    address: "Closer than you expected huh?",
+    description: "Ask your bestie for specifications :>"
   };
 
   const copyCoordinates = () => {
@@ -26,7 +27,7 @@ const Location = () => {
   };
 
   const openInMaps = () => {
-    const url = `https://www.google.com/maps?q=${coordinates.lat},${coordinates.lng}`;
+    const url = `https://maps.app.goo.gl/CbJrNPxQbq4XKbm29`;
     window.open(url, '_blank');
   };
 
@@ -37,11 +38,10 @@ const Location = () => {
           <CardContent className="p-8 text-center">
             <Gift className="text-primary mx-auto mb-6 animate-bounce" size={64} />
             <h2 className="font-script text-3xl text-primary mb-4">
-              Your Birthday Surprise
+              Surprise!
             </h2>
             <p className="text-muted-foreground mb-6">
-              I have a special place where we'll celebrate your birthday together. 
-              Are you ready to discover where we're meeting?
+              Your bestie might have something in store for you on your birthday :D
             </p>
             <Button 
               onClick={() => setRevealed(true)}
@@ -58,13 +58,21 @@ const Location = () => {
 
   return (
     <div className="min-h-screen pt-20 pb-10 px-4 romantic-gradient">
+      {/* Hidden background music */}
+      <audio
+        src={locationSong}
+        autoPlay
+        loop
+        hidden
+        preload="auto"
+      />
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12 animate-fade-in">
           <h1 className="font-script text-5xl md:text-6xl text-primary mb-4">
-            Our Birthday Rendezvous
+            Rendezvous
           </h1>
           <p className="text-xl text-muted-foreground">
-            Here's where our magical birthday celebration will take place
+            I am giggling to myself playing the scenario in my head 😖
           </p>
         </div>
 
@@ -127,24 +135,26 @@ const Location = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-primary">
                 <Heart size={24} />
-                Why This Place?
+                Where exactly?
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  This location holds a special place in my heart because it's where we shared 
-                  one of our most beautiful moments together. Under the twinkling city lights, 
-                  we talked for hours about our dreams and our future.
+                  A secret stirs, the night runs fast,<br></br>
+                  The waiting days won’t truly last.<br></br>
+                  A step away, yet nearer still,<br></br>
+                  The hidden path bends to your will.
                 </p>
                 <p>
-                  It felt like the perfect place to celebrate your birthday - somewhere that's 
-                  already filled with our love and beautiful memories. I can't wait to create 
-                  new ones with you there.
+                  A gift awaits where laughter stays,<br></br>
+                  Carried close through quiet ways.<br></br>
+                  Not by the one you might first see,<br></br>
+                  But brought with love—your dearest she.
                 </p>
                 <div className="bg-primary/10 rounded-lg p-4 mt-6">
                   <p className="text-primary font-medium text-center">
-                    "Every love story is beautiful, but ours is my favorite." ❤️
+                    To the world you may be just one person, but to me you are the world
                   </p>
                 </div>
               </div>
@@ -152,19 +162,19 @@ const Location = () => {
           </Card>
         </div>
 
-        {/* Map Placeholder */}
+        {/* Map Embed */}
         <Card className="mt-8 romantic-shadow border-primary/20 animate-fade-in">
           <CardContent className="p-0">
-            <div className="h-64 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="text-primary mx-auto mb-4" size={48} />
-                <p className="text-muted-foreground">
-                  Interactive map would be displayed here
-                </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Click the buttons above to open in your preferred map app
-                </p>
-              </div>
+            <div className="rounded-lg overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7000.0247916223025!2d77.3367455!3d28.6892758!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfa5a0661e5c1%3A0x9a577e2a1c84c95b!2sChawla&#39;s%20Veg%20Kitchen!5e0!3m2!1sen!2sin!4v1756907216374!5m2!1sen!2sin"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </CardContent>
         </Card>

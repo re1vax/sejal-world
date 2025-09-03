@@ -23,34 +23,34 @@ const LoveQuiz = ({ onComplete }: LoveQuizProps) => {
 
   const questions: Question[] = [
     {
-      question: "What was the first movie we watched together?",
-      options: ["The Notebook", "Titanic", "La La Land", "The Princess Bride"],
+      question: "What was the first movie we watched together, just the two of us?",
+      options: ["The Other Boleyn Girl", "The King", "Laila Majnu", "Smile"],
       correct: 0,
-      explanation: "It was The Notebook, and you cried at the ending just like I did! ❤️"
+      explanation: "It was The Other Boleyn Girl, you said you saw a reel and I wanted to watch it with you!"
     },
     {
-      question: "What's my favorite thing about you?",
-      options: ["Your smile", "Your laugh", "Your kindness", "Everything"],
-      correct: 3,
-      explanation: "It's everything about you! I couldn't pick just one thing because you're perfect in every way."
+      question: "What’s my favorite nickname for you?",
+      options: ["Khaleesi", "Sejo", "Sage", "Snacc"],
+      correct: 1,
+      explanation: "Of course it's Sejo but honestly, all of them are just on point."
     },
     {
-      question: "Where did we have our first kiss?",
-      options: ["The park", "My car", "The coffee shop", "Under the stars"],
+      question: "When did we have our first kiss?",
+      options: ["18th April 2025", "21st April 2025", "5th May 2025", "19th April 2025"],
       correct: 3,
-      explanation: "Under the stars on that perfect summer night. I'll never forget that magical moment."
+      explanation: "Nervous slow approach, looking into your eyes and then your lips and I met them with mine. Felt absolutely magical to me"
     },
     {
       question: "What's our special song?",
-      options: ["Perfect by Ed Sheeran", "All of Me by John Legend", "Thinking Out Loud", "Make You Feel My Love"],
-      correct: 1,
-      explanation: "All of Me by John Legend - because you really do have all of me, forever and always."
+      options: ["Perfect by Ed Sheeran", "Jo Tum Mere Ho by Anuv Jain", "I Like You so Much, You'll Know It by AVIWKILA", "Maand by Bayan"],
+      correct: 2,
+      explanation: "You introduced me to this song and I couldn't stop listening. It always reminds me of you. (psst there is a secret message related to this ~)"
     },
     {
-      question: "What do I love most about our relationship?",
-      options: ["How we laugh together", "How comfortable we are", "How we support each other", "All of the above"],
-      correct: 3,
-      explanation: "All of the above! Our relationship is built on laughter, comfort, support, and so much love."
+      question: "When did you give a proper reply to my confession?",
+      options: ["26th February 2025", "27th February 2025", "28th February 2025", "1st March 2025"],
+      correct: 2,
+      explanation: "You did say you liked me back on the morning of 27th but you wanted to do it properly and that text came on the 28th around 8PM (psst there is a secret message related to this too~)"
     }
   ];
 
@@ -74,7 +74,7 @@ const LoveQuiz = ({ onComplete }: LoveQuizProps) => {
       setShowResult(true);
       // Calculate final score including the current question
       const finalScore = (selectedAnswer === questions[currentQuestion].correct ? score + 1 : score);
-      onComplete(finalScore * 20); // 20 points per correct answer
+      onComplete(finalScore * 300); // 200 points per correct answer
     }
   };
 
@@ -89,14 +89,14 @@ const LoveQuiz = ({ onComplete }: LoveQuizProps) => {
           </p>
           <p className="text-muted-foreground mb-6">
             {score === questions.length 
-              ? "Perfect score! You know our love story by heart ❤️" 
+              ? "Perfect score! You know our story by heart" 
               : score >= questions.length / 2
-              ? "Great job! You remember our beautiful moments together 💕"
-              : "Every moment we create is worth remembering. Let's make more memories! 🥰"}
+              ? "Great job! You remember much more than you thought you would hehe"
+              : "Every moment with you is worth remembering. And there will be many many more!"}
           </p>
           <div className="bg-primary/10 rounded-lg p-4">
             <p className="text-primary font-medium">
-              "Thank you for knowing me so well and loving me so completely." 💖
+              "Thanks for existing Sejo, Thank you for being you"
             </p>
           </div>
         </CardContent>

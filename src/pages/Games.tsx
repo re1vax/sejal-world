@@ -16,8 +16,8 @@ const Games = () => {
   const games = [
     {
       id: "quiz",
-      title: "Love Quiz",
-      description: "Test how well you know our beautiful story together",
+      title: "Quiz Time!",
+      description: "Anything less than a perfect score and I'll be pouting, not really though :>",
       icon: Heart,
       color: "text-pink-400",
       component: LoveQuiz,
@@ -25,7 +25,7 @@ const Games = () => {
     {
       id: "word",
       title: "Word Puzzle",
-      description: "Find all the romantic words hidden in the puzzle",
+      description: "Find all the words hidden in the puzzle",
       icon: Star,
       color: "text-amber-400",
       component: WordPuzzle,
@@ -33,7 +33,7 @@ const Games = () => {
     {
       id: "memory",
       title: "Memory Match",
-      description: "Match the cards to reveal our precious memories",
+      description: "Fun lil brain tickler eh?",
       icon: Sparkles,
       color: "text-purple-400",
       component: MemoryMatch,
@@ -41,7 +41,7 @@ const Games = () => {
     {
       id: "riddle",
       title: "Riddle Challenge",
-      description: "Solve romantic riddles to unlock sweet messages",
+      description: "riddle me this :D",
       icon: Gift,
       color: "text-emerald-400",
       component: RiddleChallenge,
@@ -49,7 +49,7 @@ const Games = () => {
     {
       id: "dino",
       title: "Dino Love Run",
-      description: "Help our romantic dino avoid broken hearts!",
+      description: "Help our lil wannabe dino avoid broken hearts!",
       icon: Zap,
       color: "text-indigo-400",
       component: DinoRun,
@@ -69,7 +69,7 @@ const Games = () => {
     return Object.values(gameScores).reduce((total, score) => total + score, 0);
   };
 
-  const getRequiredScore = () => 500; // Total score needed to reveal location
+  const getRequiredScore = () => 9000; // Total score needed to reveal location
   
   const canRevealLocation = () => {
     return getTotalScore() >= getRequiredScore();
@@ -107,10 +107,13 @@ const Games = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="font-script text-5xl md:text-6xl text-primary mb-4">
-            Fun Games & Puzzles
+            Up for a little challenge gorgeous?
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Let's play some romantic games together! Achieve high scores to unlock the secret location.
+            I tried putting these games in but they didn't turn out so nice 😭
+          </p>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Anywho, you need to score a total of 9000 points to reveal a surprise 😼
           </p>
           
           <div className="mt-6 space-y-3">
@@ -135,7 +138,7 @@ const Games = () => {
                 <div className="flex items-center justify-center gap-2 text-romantic-gold">
                   <Gift className="animate-bounce" size={24} />
                   <span className="font-medium">
-                    Location Unlocked! 🎉
+                    Surprise Unlocked! 🎉
                   </span>
                 </div>
               </div>
@@ -190,10 +193,10 @@ const Games = () => {
               <CardContent className="p-8">
                 <Heart className="text-primary mx-auto mb-4 animate-pulse-soft" size={48} />
                 <h3 className="text-2xl font-script text-primary mb-4">
-                  Amazing Achievement!
+                  Achievement Unlocked: Gamer Girlfriend!
                 </h3>
                 <p className="text-muted-foreground mb-2">
-                  You've earned enough points to unlock our secret location! 
+                  You've earned enough points to unlock your surprise! 
                 </p>
                 <p className="text-romantic-gold font-medium mb-6">
                   Total Score: {getTotalScore()} points! 🌟
@@ -203,7 +206,7 @@ const Games = () => {
                   className="romantic-shadow hover:glow-shadow bg-gradient-to-r from-romantic-pink to-romantic-coral hover:from-romantic-coral hover:to-romantic-pink"
                 >
                   <Gift className="mr-2" size={20} />
-                  Discover Our Secret Place
+                  Click to reveal surprise~
                 </Button>
               </CardContent>
             </Card>

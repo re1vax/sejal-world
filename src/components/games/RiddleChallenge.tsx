@@ -25,28 +25,34 @@ const RiddleChallenge = ({ onComplete }: RiddleChallengeProps) => {
 
   const riddles: Riddle[] = [
     {
-      question: "I have no voice, but I speak to your heart. I have no body, but I light up the dark. I grow stronger when shared, what am I?",
-      answer: "love",
-      hint: "It's the strongest force in the universe, and what we share together.",
-      reward: "Love is indeed the answer! You understand what makes our world bright. ❤️"
+      question: "I’m always running, but I never move. I hold the moments of us together, what am I?",
+      answer: "time",
+      hint: "We always say we want more of this together.",
+      reward: "Time! Every second with you is precious to me. ⏳❤️"
     },
     {
-      question: "I come with sunrise and stay through the night. I'm found in your laughter and shine in your eyes. I'm the warmth in your heart, what am I?",
-      answer: "joy",
-      hint: "It's what you bring to every room you enter.",
-      reward: "Joy! You bring so much happiness to my life every single day. 😊"
+      question: "I’m not a star, but I light up your nights. I’m not the sun, but I make your evenings bright. What am I?",
+      answer: "moon",
+      hint: "We’ve looked at it together more than once.",
+      reward: "The Moon 🌙 — shining just like the glow you bring into my life."
     },
     {
-      question: "I cannot be touched, but I can be felt. I cannot be seen, but I make hearts melt. I connect two souls across any distance, what am I?",
-      answer: "connection",
-      hint: "It's what we have that makes us feel close even when apart.",
-      reward: "Connection! Our souls are beautifully intertwined, no matter the distance. 💫"
+      question: "I’m invisible but can make you strong. You can’t touch me, but you know when I’m gone. What am I?",
+      answer: "trust",
+      hint: "It’s the strongest part of our relationship.",
+      reward: "Trust — the invisible thread that holds us together always. 🤝"
     },
     {
-      question: "I have no end and no beginning. I'm a circle that keeps on spinning. In your finger I like to rest, I'm a symbol of love at its best, what am I?",
-      answer: "ring",
-      hint: "It's a symbol of eternal love and commitment.",
-      reward: "A ring! A symbol of forever, just like my love for you. 💍"
+      question: "I have pages but no ink, I tell our story without ever writing a word. What am I?",
+      answer: "memories",
+      hint: "We keep making more of these, and they don’t need a book.",
+      reward: "Memories 📖 — the collection of our favorite moments together."
+    },
+    {
+      question: "I can’t be seen, but I’m always near. I live in your chest, and you feel me most when I’m with you. What am I?",
+      answer: "heartbeat",
+      hint: "It races whenever you’re close.",
+      reward: "Your heartbeat ❤️ — the rhythm that matches mine when we’re together."
     }
   ];
 
@@ -71,7 +77,7 @@ const RiddleChallenge = ({ onComplete }: RiddleChallengeProps) => {
       setShowHint(false);
     } else {
       setCompleted(true);
-      onComplete(solvedRiddles.length * 25 + 25); // 25 points per riddle + bonus
+      onComplete(solvedRiddles.length * 300 + 100); // 25 points per riddle + bonus
     }
   };
 

@@ -14,14 +14,14 @@ const MemoryMatch = ({ onComplete }: MemoryMatchProps) => {
 
   // Card pairs with romantic icons and messages
   const cardPairs = [
-    { icon: Heart, message: "Our Love", color: "text-red-400" },
-    { icon: Star, message: "Your Light", color: "text-yellow-400" },
-    { icon: Sparkles, message: "Magic Moments", color: "text-purple-400" },
-    { icon: Gift, message: "Surprises", color: "text-green-400" },
-    { icon: Music, message: "Our Song", color: "text-blue-400" },
-    { icon: Camera, message: "Memories", color: "text-pink-400" },
-    { icon: Sun, message: "Bright Days", color: "text-orange-400" },
-    { icon: Moon, message: "Sweet Dreams", color: "text-indigo-400" },
+    { icon: Heart, color: "text-red-400" },
+    { icon: Star, color: "text-yellow-400" },
+    { icon: Sparkles, color: "text-purple-400" },
+    { icon: Gift, color: "text-green-400" },
+    { icon: Music, color: "text-blue-400" },
+    { icon: Camera, color: "text-pink-400" },
+    { icon: Sun, color: "text-orange-400" },
+    { icon: Moon, color: "text-indigo-400" },
   ];
 
   // Shuffle and duplicate cards
@@ -30,7 +30,7 @@ const MemoryMatch = ({ onComplete }: MemoryMatchProps) => {
     return doubled.sort(() => Math.random() - 0.5).map((card, index) => ({
       ...card,
       id: index,
-      pairId: cardPairs.findIndex(pair => pair.message === card.message)
+      pairId: cardPairs.findIndex(pair => pair.icon === card.icon)
     }));
   });
 
@@ -41,8 +41,8 @@ const MemoryMatch = ({ onComplete }: MemoryMatchProps) => {
     if (matchedPairs.length === cardPairs.length && !completed) {
       setCompleted(true);
       // Score based on efficiency (fewer moves = higher score)
-      const maxScore = 200;
-      const efficiency = Math.max(0, maxScore - moves * 5);
+      const maxScore = 2000;
+      const efficiency = Math.max(0, maxScore - moves * 50);
       memoizedOnComplete(efficiency);
     }
   }, [matchedPairs.length, cardPairs.length, completed, moves, memoizedOnComplete]);
@@ -157,9 +157,6 @@ const MemoryMatch = ({ onComplete }: MemoryMatchProps) => {
                       flipped ? "block" : "hidden"
                     }`}>
                       <Icon className={`${card.color} mb-1`} size={24} />
-                      <span className="text-xs text-center font-medium text-foreground">
-                        {card.message}
-                      </span>
                     </div>
                   </div>
                 </div>
