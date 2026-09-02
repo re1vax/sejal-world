@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, Star, Trophy, Gift, Sparkles, Zap } from "lucide-react";
@@ -9,6 +10,7 @@ import RiddleChallenge from "@/components/games/RiddleChallenge";
 import DinoRun from "@/components/games/DinoRun";
 
 const Games = () => {
+  const navigate = useNavigate();
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
   const [completedGames, setCompletedGames] = useState<string[]>([]);
   const [gameScores, setGameScores] = useState<{[key: string]: number}>({});
@@ -202,7 +204,7 @@ const Games = () => {
                   Total Score: {getTotalScore()} points! 🌟
                 </p>
                 <Button 
-                  onClick={() => window.location.href = "/location"}
+                  onClick={() => navigate("/location")}
                   className="romantic-shadow hover:glow-shadow bg-gradient-to-r from-romantic-pink to-romantic-coral hover:from-romantic-coral hover:to-romantic-pink"
                 >
                   <Gift className="mr-2" size={20} />
